@@ -17,10 +17,11 @@ class Clock {
            let secForm = time.seconds.toString().padStart(2, "0")
            let timeForm = `${time.hour}:${minForm}`;
            let timeFull = `${time.hour}:${minForm}:${secForm}`;
+           console.log(timeFull)
 
 
-           this.element.querySelector('tsClock').textContent = timeFull;
-        //    this.element.getElementById('tsClock1').innerHTML = timeForm;
+           this.element.innerHTML = timeFull;
+        //    this.element.innerHTML = timeForm;
            
        }
        getTime(){
@@ -31,10 +32,15 @@ class Clock {
                seconds: now.getSeconds()
            };
        }
+   
     }
 
     let clockElement = document.querySelector(".clockpage");
     let clockObject = new Clock(clockElement);
 
     clockObject.Run();
+
+    clockElement.addEventListener('click', (event) =>{
+        this.element.innerHTML = timeForm;
+    })
 
