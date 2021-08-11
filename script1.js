@@ -18,9 +18,14 @@ class Clock {
            let timeForm = `${time.hour}:${minForm}`;
            let timeFull = `${time.hour}:${minForm}:${secForm}`;
            console.log(timeFull)
-
-
-           this.element.innerHTML = timeFull;
+           
+           if (document.querySelector(".clockpage").classList.contains('hidden')){
+            this.element.innerHTML = timeForm;
+            } else {
+                this.element.innerHTML = timeFull;  
+            }
+           
+        //    this.element.innerHTML = timeFull;
         //    this.element.innerHTML = timeForm;
            
        }
@@ -32,15 +37,16 @@ class Clock {
                seconds: now.getSeconds()
            };
        }
-   
     }
+    
 
     let clockElement = document.querySelector(".clockpage");
-    let clockObject = new Clock(clockElement);
 
+    let clockObject = new Clock(clockElement);
+  
     clockObject.Run();
 
-    clockElement.addEventListener('click', (event) =>{
-        this.element.innerHTML = timeForm;
+    document.querySelector(".clockpage").addEventListener('click', (event) =>{
+        event.target.classList.toggle('hidden');
     })
 
